@@ -19,7 +19,6 @@ module SwiftypeEnterprise
     # @option options [Numeric] :overall_timeout overall timeout for requests in seconds (default: 15s)
     # @option options [Numeric] :open_timeout the number of seconds Net::HTTP (default: 15s)
     #   will wait while opening a connection before raising a Timeout::Error
-
     def initialize(options={})
       @options = options
     end
@@ -49,34 +48,41 @@ module SwiftypeEnterprise
         post("ent/document_receipts/bulk_show.json", :ids => receipt_ids.join(','))
       end
 
-      # Index a batch of documents using the {asynchronous API}[https://app.swiftype.com/ent/docs/custom_sources].
+      # Index a batch of documents synchronously using the {Content Source API}[https://app.swiftype.com/ent/docs/custom_sources].
       #
       # @param [String] content_source_key the unique Content Source key as found in your Content Sources dashboard
       # @param [Array] documents an Array of Document Hashes
-      # @param [Hash] options additional options
-      # @option options [Boolean] :sync (false) When true, poll until all receipts are no longer pending or timeout is reached. When false, output is document receipts created.
       # @option options [Numeric] :timeout (10) Number of seconds to wait before raising an exception
       #
-      # @return [Array<Hash>] an Array of newly-created Document Receipt hashes if used in :sync => false mode
-      # @return [Array<Hash>] an Array of processed Document Receipt hashes if used in :sync => true mode
+      # @return [Array<Hash>] an Array of processed Document Receipt hashes
       #
-      # @raise [Timeout::Error] when used in :sync => true mode and the timeout expires
+      # @raise [Timeout::Error] when timeout expires waiting for receipts
       def index_documents(content_source_key, documents, options = {})
         documents = Array(documents)
 
         res = async_create_or_update_documents(content_source_key, documents)
+        receipt_ids = res["document_receipts"].map { |a| a["id"] }
 
-        if options[:sync]
-          receipt_ids = res["document_receipts"].map { |a| a["id"] }
-
-          poll(options) do
-            receipts = document_receipts(receipt_ids)
-            flag = receipts.all? { |a| a["status"] != "pending" }
-            flag ? receipts : false
-          end
-        else
-          res
+        poll(options) do
+          receipts = document_receipts(receipt_ids)
+          flag = receipts.all? { |a| a["status"] != "pending" }
+          flag ? receipts : false
         end
+      end
+
+      # Index a batch of documents asynchronously using the {Content Source API}[https://app.swiftype.com/ent/docs/custom_sources].
+      #
+      # @param [String] content_source_key the unique Content Source key as found in your Content Sources dashboard
+      # @param [Array] documents an Array of Document Hashes
+      # @param [Hash] options additional options
+      # @option options [Numeric] :timeout (10) Number of seconds to wait before raising an exception
+      #
+      # @return [Array<Hash>] an Array of Document Receipt IDs pending completion
+      def async_index_documents(content_source_key, documents, options = {})
+        documents = Array(documents)
+
+        res = async_create_or_update_documents(content_source_key, documents)
+        res["document_receipts"].map { |a| a["id"] }
       end
 
       # Destroy a batch of documents given a list of external IDs

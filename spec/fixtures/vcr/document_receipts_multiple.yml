@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:3002/api/v1/ent/document_receipts/bulk_show.json
     body:
       encoding: UTF-8
-      string: '{"ids":"5955431b2139deb77b971a86,5955431b2139deb77b971a88"}'
+      string: '{"ids":"5955883d2139deb77b971ac8,5955883d2139deb77b971aca"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -31,23 +31,23 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"a2c9de0bc6c39717e73232b231e829a5"
+      - W/"24f5a74d9ebbb26dd13d58475107dc2e"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJWZmMGIyMGI1NjE3OGEzMmIxY2I3MjMyNGVjMmIxNDY0BjsAVA%3D%3D--5d6571e8d566aa18e3b1a58675ec7a51fba8f687;
-        path=/; expires=Tue, 29 Jun 2027 18:12:43 -0000; HttpOnly
+      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJWZiNGViMWVjY2UxNWYxMjQ0YTllNDNjMjAyOGQ3YTcwBjsAVA%3D%3D--287de8fd6273312c7fdf087dbf6bd36c73270743;
+        path=/; expires=Tue, 29 Jun 2027 23:07:41 -0000; HttpOnly
       X-Request-Id:
-      - 01e16591-20ee-4a83-88cd-a13680b0560f
+      - dcdc2a59-be37-4856-965e-56fb62f6e13e
       X-Runtime:
-      - '0.160183'
+      - '0.169334'
       Connection:
       - close
       Server:
       - thin 1.5.0 codename Knife
     body:
       encoding: UTF-8
-      string: '[{"id":"5955431b2139deb77b971a86","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955431b2139deb77b971a86"}},{"id":"5955431b2139deb77b971a88","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955431b2139deb77b971a88"}}]'
+      string: '[{"id":"5955883d2139deb77b971ac8","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955883d2139deb77b971ac8"}},{"id":"5955883d2139deb77b971aca","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955883d2139deb77b971aca"}}]'
     http_version: 
-  recorded_at: Thu, 29 Jun 2017 18:12:43 GMT
+  recorded_at: Thu, 29 Jun 2017 23:07:41 GMT
 recorded_with: VCR 3.0.3

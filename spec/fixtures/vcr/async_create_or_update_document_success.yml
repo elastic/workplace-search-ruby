@@ -35,19 +35,19 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - _st_main_session=%3D%3D--cdac36cff078378ca5cc5342160b379df35a6e8b;
-        path=/; expires=Tue, 29 Jun 2027 18:12:43 -0000; HttpOnly
+      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTBmMDdkZWFmNzM1ZmYxMWI0YWY5MDBlMmJjYzNjMTNlBjsAVA%3D%3D--8c7c4055679dc5759e21ca37fe87ea9a5a4fe294;
+        path=/; expires=Tue, 29 Jun 2027 23:07:41 -0000; HttpOnly
       X-Request-Id:
-      - f68fa163-8e8d-43b1-a736-1878d419d68a
+      - 79c127f9-21e1-4cd5-a9eb-96c7a5dcc6d2
       X-Runtime:
-      - '0.101863'
+      - '0.111488'
       Connection:
       - close
       Server:
       - thin 1.5.0 codename Knife
     body:
       encoding: UTF-8
-      string: '{"batch_link":"http://localhost:3002/api/v1/ent/document_receipts/bulk_show?ids=5955431b2139deb77b971a86%2C5955431b2139deb77b971a88","document_receipts":[{"id":"5955431b2139deb77b971a86","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955431b2139deb77b971a86"}},{"id":"5955431b2139deb77b971a88","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955431b2139deb77b971a88"}}]}'
-    http_version:
-  recorded_at: Thu, 29 Jun 2017 18:12:43 GMT
+      string: '{"batch_link":"http://localhost:3002/api/v1/ent/document_receipts/bulk_show?ids=5955883d2139deb77b971ac8%2C5955883d2139deb77b971aca","document_receipts":[{"id":"5955883d2139deb77b971ac8","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955883d2139deb77b971ac8"}},{"id":"5955883d2139deb77b971aca","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955883d2139deb77b971aca"}}]}'
+    http_version: 
+  recorded_at: Thu, 29 Jun 2017 23:07:41 GMT
 recorded_with: VCR 3.0.3

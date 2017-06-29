@@ -47,7 +47,7 @@ module SwiftypeEnterprise
     # Construct and send a request to the API.
     #
     # @raise [Timeout::Error] when the timeout expires
-    def request(method, path, params={})
+    def request(method, path, params = {})
       Timeout.timeout(overall_timeout) do
         uri = URI.parse("#{SwiftypeEnterprise.endpoint}#{path}")
 

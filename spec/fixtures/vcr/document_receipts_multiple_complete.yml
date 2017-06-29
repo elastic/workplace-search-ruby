@@ -2,60 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:3002/api/v1/ent/sources/59542d332139de0acacc7dd4/documents/bulk_create.json
-    body:
-      encoding: UTF-8
-      string: '[{"external_id":"INscMGmhmX4","url":"http://www.youtube.com/watch?v=v1uyQZNg2vE","title":"The
-        Original Grumpy Cat","body":"this is a test"},{"external_id":"JNDFojsd02","url":"http://www.youtube.com/watch?v=tsdfhk2j","title":"Another
-        Grumpy Cat","body":"this is also a test"}]'
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - SwiftypeEnterprise-Ruby/1.0.0
-      Content-Type:
-      - application/json
-      Authorization:
-      - Bearer cGUN-vBokevBhhzyA669
-  response:
-    status:
-      code: 202
-      message: Accepted
-    headers:
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      Content-Type:
-      - application/json; charset=utf-8
-      Cache-Control:
-      - no-cache
-      Set-Cookie:
-      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTljYjlhNDFkOTI2MmM4YjYxZWQ2MzcyNWIyY2VjMThmBjsAVA%3D%3D--10e1caadefddb0eab1dbc2a0a84de9394e5208a8;
-        path=/; expires=Tue, 29 Jun 2027 18:12:29 -0000; HttpOnly
-      X-Request-Id:
-      - 35529cd1-23c1-4514-bb48-92de420116f3
-      X-Runtime:
-      - '0.149438'
-      Connection:
-      - close
-      Server:
-      - thin 1.5.0 codename Knife
-    body:
-      encoding: UTF-8
-      string: '{"batch_link":"http://localhost:3002/api/v1/ent/document_receipts/bulk_show?ids=5955430d2139deb77b971a82%2C5955430d2139deb77b971a84","document_receipts":[{"id":"5955430d2139deb77b971a82","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955430d2139deb77b971a82"}},{"id":"5955430d2139deb77b971a84","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955430d2139deb77b971a84"}}]}'
-    http_version: 
-  recorded_at: Thu, 29 Jun 2017 18:12:29 GMT
-- request:
-    method: post
     uri: http://localhost:3002/api/v1/ent/document_receipts/bulk_show.json
     body:
       encoding: UTF-8
-      string: '{"ids":"5955430d2139deb77b971a82,5955430d2139deb77b971a84"}'
+      string: '{"ids":"5955883d2139deb77b971ac8,5955883d2139deb77b971aca"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -81,123 +31,23 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"6c47b741bd6f0fbd878a928ab2ad2a63"
+      - W/"d1181e583a6e21cef40034ffbe158863"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTkwNjJlYzZiMDEzYzM5NTQ5MWQ2MGUwZjM5ZWE1Nzk2BjsAVA%3D%3D--3c3622976c65933026ac89d700856cde5b55623e;
-        path=/; expires=Tue, 29 Jun 2027 18:12:29 -0000; HttpOnly
+      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJWUxNDNiYzk5OTYyYzg3M2IwYmRiYTY5N2FjNzc1MmRjBjsAVA%3D%3D--b69fca8a2b9b5ca40998f0b8699ace2abd24f792;
+        path=/; expires=Tue, 29 Jun 2027 23:07:41 -0000; HttpOnly
       X-Request-Id:
-      - 02ca2795-182a-487e-9194-975acfb0a655
+      - d61b11b2-1bfd-4a05-8fb3-10666ff9200c
       X-Runtime:
-      - '0.125162'
+      - '0.144776'
       Connection:
       - close
       Server:
       - thin 1.5.0 codename Knife
     body:
       encoding: UTF-8
-      string: '[{"id":"5955430d2139deb77b971a82","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955430d2139deb77b971a82"}},{"id":"5955430d2139deb77b971a84","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955430d2139deb77b971a84"}}]'
+      string: '[{"id":"5955883d2139deb77b971ac8","external_id":"INscMGmhmX4","status":"complete","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955883d2139deb77b971ac8"}},{"id":"5955883d2139deb77b971aca","external_id":"JNDFojsd02","status":"complete","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955883d2139deb77b971aca"}}]'
     http_version: 
-  recorded_at: Thu, 29 Jun 2017 18:12:29 GMT
-- request:
-    method: post
-    uri: http://localhost:3002/api/v1/ent/document_receipts/bulk_show.json
-    body:
-      encoding: UTF-8
-      string: '{"ids":"5955430d2139deb77b971a82,5955430d2139deb77b971a84"}'
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - SwiftypeEnterprise-Ruby/1.0.0
-      Content-Type:
-      - application/json
-      Authorization:
-      - Bearer cGUN-vBokevBhhzyA669
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"2690f1c8cbb4dff014cedb4cd8c18004"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTY1Yzc1ZDZiZDY3MjUxZGRjYzVhOGI1MThiMTM5ZmMxBjsAVA%3D%3D--168be6beecbc7bed10baab07c4fd0cc1a2616628;
-        path=/; expires=Tue, 29 Jun 2027 18:12:29 -0000; HttpOnly
-      X-Request-Id:
-      - 3e58ddee-00fb-4428-a1ec-529709d586a4
-      X-Runtime:
-      - '0.122320'
-      Connection:
-      - close
-      Server:
-      - thin 1.5.0 codename Knife
-    body:
-      encoding: UTF-8
-      string: '[{"id":"5955430d2139deb77b971a82","external_id":"INscMGmhmX4","status":"complete","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955430d2139deb77b971a82"}},{"id":"5955430d2139deb77b971a84","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955430d2139deb77b971a84"}}]'
-    http_version: 
-  recorded_at: Thu, 29 Jun 2017 18:12:29 GMT
-- request:
-    method: post
-    uri: http://localhost:3002/api/v1/ent/document_receipts/bulk_show.json
-    body:
-      encoding: UTF-8
-      string: '{"ids":"5955430d2139deb77b971a82,5955430d2139deb77b971a84"}'
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - SwiftypeEnterprise-Ruby/1.0.0
-      Content-Type:
-      - application/json
-      Authorization:
-      - Bearer cGUN-vBokevBhhzyA669
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"a16ce46224e0585d7b21e543ba2db9eb"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJWI5ZDZiOTU3MDI0ZjlmMzAyYjI4YTI2YmVmODQ3NDkyBjsAVA%3D%3D--a5c1171aa880e0b5ec6798dd3c6cac2c96b78b8a;
-        path=/; expires=Tue, 29 Jun 2027 18:12:29 -0000; HttpOnly
-      X-Request-Id:
-      - 330ec375-ea03-4860-9efe-1c59ddf23a4d
-      X-Runtime:
-      - '0.120849'
-      Connection:
-      - close
-      Server:
-      - thin 1.5.0 codename Knife
-    body:
-      encoding: UTF-8
-      string: '[{"id":"5955430d2139deb77b971a82","external_id":"INscMGmhmX4","status":"complete","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955430d2139deb77b971a82"}},{"id":"5955430d2139deb77b971a84","external_id":"JNDFojsd02","status":"complete","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/5955430d2139deb77b971a84"}}]'
-    http_version: 
-  recorded_at: Thu, 29 Jun 2017 18:12:29 GMT
+  recorded_at: Thu, 29 Jun 2017 23:07:41 GMT
 recorded_with: VCR 3.0.3

@@ -9,7 +9,7 @@ describe SwiftypeEnterprise::Client do
   end
 
   context 'ContentSourceDocuments' do
-    def check_async_response_format(response, options = {})
+    def check_receipt_response_format(response, options = {})
       expect(response.keys).to match_array(["document_receipts", "batch_link"])
       expect(response["document_receipts"]).to be_a_kind_of(Array)
       expect(response["document_receipts"].first.keys).to match_array(["id", "external_id", "links", "status", "errors"])
@@ -35,8 +35,7 @@ describe SwiftypeEnterprise::Client do
         def get_receipt_ids
           receipt_ids = nil
           VCR.use_cassette(:async_create_or_update_document_success) do
-            response = client.index_documents(content_source_key, documents)
-            receipt_ids = response["document_receipts"].map { |r| r["id"] }
+            receipt_ids = client.async_index_documents(content_source_key, documents)
           end
           receipt_ids
         end
@@ -48,23 +47,15 @@ describe SwiftypeEnterprise::Client do
           response = client.document_receipts(receipt_ids)
           expect(response.size).to eq(2)
           expect(response.first.keys).to match_array(["id", "external_id", "links", "status", "errors"])
-          expect(response.first['status']).to eq('pending')
         end
       end
     end
 
     context '#index_documents' do
-      it 'returns #async_create_or_update_documents format return when async has been passed as true' do
-        VCR.use_cassette(:async_create_or_update_document_success) do
-          response = client.index_documents(content_source_key, documents)
-          check_async_response_format(response, :external_id => documents.first["external_id"], :status => "pending")
-        end
-      end
-
       it 'returns document_receipts when successful' do
         VCR.use_cassette(:async_create_or_update_document_success) do
           VCR.use_cassette(:document_receipts_multiple_complete) do
-            response = client.index_documents(content_source_key, documents, :sync => true)
+            response = client.index_documents(content_source_key, documents)
             expect(response.map(&:keys).map(&:sort)).to eq([["errors", "external_id", "id", "links", "status"], ["errors", "external_id", "id", "links", "status"]])
             expect(response.map { |a| a["status"] }).to eq(["complete", "complete"])
           end
@@ -78,6 +69,17 @@ describe SwiftypeEnterprise::Client do
           expect do
             client.index_documents(content_source_key, documents, :timeout => 0.01, :sync => true)
           end.to raise_error(Timeout::Error)
+        end
+      end
+    end
+
+    context '#async_index_documents' do
+      it 'returns receipt IDs when successful' do
+        VCR.use_cassette(:async_create_or_update_document_success) do
+          VCR.use_cassette(:document_receipts_multiple_complete) do
+            response = client.async_index_documents(content_source_key, documents)
+            expect(response.size).to eq(2)
+          end
         end
       end
     end
