@@ -15,7 +15,7 @@ module SwiftypeEnterprise
     # Create a new SwiftypeEnterprise::Client client
     #
     # @param options [Hash] a hash of configuration options that will override what is set on the SwiftypeEnterprise class.
-    # @option options [String] :access_token an API Key to use for this client
+    # @option options [String] :access_token an Access Token to use for this client
     # @option options [Numeric] :overall_timeout overall timeout for requests in seconds (default: 15s)
     # @option options [Numeric] :open_timeout the number of seconds Net::HTTP (default: 15s)
     #   will wait while opening a connection before raising a Timeout::Error

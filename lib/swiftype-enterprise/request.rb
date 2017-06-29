@@ -78,8 +78,6 @@ module SwiftypeEnterprise
         raise SwiftypeEnterprise::InvalidCredentials
       when Net::HTTPNotFound
         raise SwiftypeEnterprise::NonExistentRecord
-      when Net::HTTPConflict
-        raise SwiftypeEnterprise::RecordAlreadyExists
       when Net::HTTPBadRequest
         raise SwiftypeEnterprise::BadRequest
       when Net::HTTPForbidden
