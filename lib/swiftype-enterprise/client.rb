@@ -9,7 +9,6 @@ module SwiftypeEnterprise
     include SwiftypeEnterprise::Request
 
     def self.configure(&block)
-      warn "`SwiftypeEnterprise::Easy.configure` has been deprecated. Use `SwiftypeEnterprise.configure` instead."
       SwiftypeEnterprise.configure &block
     end
 
@@ -51,20 +50,18 @@ module SwiftypeEnterprise
       end
 
       # Index a batch of documents using the {asynchronous API}[https://app.swiftype.com/ent/docs/custom_sources].
-      # This is a good choice if you have a large number of documents.
       #
       # @param [String] content_source_key the unique Content Source key as found in your Content Sources dashboard
-      # @param [String] document_type_id the Document Type slug or ID
       # @param [Array] documents an Array of Document Hashes
       # @param [Hash] options additional options
-      # @option options [Boolean] :async (false) When true, output is document receipts created. When false, poll until all receipts are no longer pending or timeout is reached.
+      # @option options [Boolean] :sync (false) When true, poll until all receipts are no longer pending or timeout is reached. When false, output is document receipts created.
       # @option options [Numeric] :timeout (10) Number of seconds to wait before raising an exception
       #
-      # @return [Array<Hash>] an Array of newly-created Document Receipt hashes if used in :async => true mode
-      # @return [Array<Hash>] an Array of processed Document Receipt hashes if used in :async => false mode
+      # @return [Array<Hash>] an Array of newly-created Document Receipt hashes if used in :sync => false mode
+      # @return [Array<Hash>] an Array of processed Document Receipt hashes if used in :sync => true mode
       #
-      # @raise [Timeout::Error] when used in :async => false mode and the timeout expires
-      def index_documents(content_source_key, documents = [], options = {})
+      # @raise [Timeout::Error] when used in :sync => true mode and the timeout expires
+      def index_documents(content_source_key, documents, options = {})
         documents = Array(documents)
 
         res = async_create_or_update_documents(content_source_key, documents)
@@ -87,13 +84,13 @@ module SwiftypeEnterprise
       # @param [Array<String>] document_ids an Array of Document External IDs
       #
       # @return [Array<Hash>] an Array of Document destroy result hashes
-      def destroy_documents(content_source_key, document_ids = [])
+      def destroy_documents(content_source_key, document_ids)
         document_ids = Array(document_ids)
         post("ent/sources/#{content_source_key}/documents/bulk_destroy.json", document_ids)
       end
 
       private
-      def async_create_or_update_documents(content_source_key, documents = [])
+      def async_create_or_update_documents(content_source_key, documents)
         post("ent/sources/#{content_source_key}/documents/bulk_create.json", documents)
       end
     end

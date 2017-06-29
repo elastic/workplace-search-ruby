@@ -61,7 +61,7 @@ describe SwiftypeEnterprise::Client do
         end
       end
 
-      it 'returns document_receipts when successfull' do
+      it 'returns document_receipts when successful' do
         VCR.use_cassette(:async_create_or_update_document_success) do
           VCR.use_cassette(:document_receipts_multiple_complete) do
             response = client.index_documents(content_source_key, documents, :sync => true)
@@ -78,6 +78,21 @@ describe SwiftypeEnterprise::Client do
           expect do
             client.index_documents(content_source_key, documents, :timeout => 0.01, :sync => true)
           end.to raise_error(Timeout::Error)
+        end
+      end
+    end
+
+    context '#destroy_documents' do
+      it 'returns #async_create_or_update_documents format return when async has been passed as true' do
+        VCR.use_cassette(:async_create_or_update_document_success) do
+          VCR.use_cassette(:document_receipts_multiple_complete) do
+            client.index_documents(content_source_key, documents, :sync => true)
+            VCR.use_cassette(:destroy_documents_success) do
+              response = client.destroy_documents(content_source_key, [documents.first['external_id']])
+              expect(response.size).to eq(1)
+              expect(response.first['success']).to eq(true)
+            end
+          end
         end
       end
     end

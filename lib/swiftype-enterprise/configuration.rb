@@ -37,7 +37,7 @@ module SwiftypeEnterprise
     # Return a hash of the configured options.
     def options
       options = {}
-      VALID_OPTIONS_KEYS.each{|k| options[k] = send(k)}
+      VALID_OPTIONS_KEYS.each{ |k| options[k] = send(k) }
       options
     end
 
