@@ -1,3 +1,4 @@
+require 'set'
 require 'swiftype-enterprise/configuration'
 require 'swiftype-enterprise/request'
 require 'swiftype-enterprise/utils'
