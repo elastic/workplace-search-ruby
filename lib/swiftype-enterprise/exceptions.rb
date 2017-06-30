@@ -5,4 +5,5 @@ module SwiftypeEnterprise
   class BadRequest < ClientException; end
   class Forbidden < ClientException; end
   class UnexpectedHTTPException < ClientException; end
+  class InvalidDocument < ClientException; end
 end

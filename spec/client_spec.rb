@@ -67,8 +67,25 @@ describe SwiftypeEnterprise::Client do
 
         VCR.use_cassette(:async_create_or_update_document_success) do
           expect do
-            client.index_documents(content_source_key, documents, :timeout => 0.01, :sync => true)
+            client.index_documents(content_source_key, documents, :timeout => 0.01)
           end.to raise_error(Timeout::Error)
+        end
+      end
+
+      it 'should validate required document fields' do
+        documents = [{'external_id'=>'INscMGmhmX4', 'url' => 'http://www.youtube.com/watch?v=v1uyQZNg2vE'}]
+        expect do
+          client.index_documents(content_source_key, documents)
+        end.to raise_error(SwiftypeEnterprise::InvalidDocument)
+      end
+
+      it 'should accept non-core document fields' do
+        documents.first['a_new_field'] = 'some value'
+        VCR.use_cassette(:async_create_or_update_document_success) do
+          VCR.use_cassette(:document_receipts_multiple_complete) do
+            response = client.index_documents(content_source_key, documents)
+            expect(response.map { |a| a["status"] }).to eq(["complete", "complete"])
+          end
         end
       end
     end
@@ -88,7 +105,7 @@ describe SwiftypeEnterprise::Client do
       it 'returns #async_create_or_update_documents format return when async has been passed as true' do
         VCR.use_cassette(:async_create_or_update_document_success) do
           VCR.use_cassette(:document_receipts_multiple_complete) do
-            client.index_documents(content_source_key, documents, :sync => true)
+            client.index_documents(content_source_key, documents)
             VCR.use_cassette(:destroy_documents_success) do
               response = client.destroy_documents(content_source_key, [documents.first['external_id']])
               expect(response.size).to eq(1)
