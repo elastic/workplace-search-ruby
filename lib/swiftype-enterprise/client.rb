@@ -71,7 +71,7 @@ module SwiftypeEnterprise
       #
       # @return [Array<Hash>] an Array of processed Document Receipt hashes
       #
-      # @raise [SwiftypeEnterprise::InvalidDocument] when fields are missing or unsupported fields are supplied
+      # @raise [SwiftypeEnterprise::InvalidDocument] when a single document is missing required fields or contains unsupported fields
       # @raise [Timeout::Error] when timeout expires waiting for receipts
       def index_documents(content_source_key, documents, options = {})
         documents = Array(documents).map! { |document| validate_and_normalize_document(document) }
@@ -94,7 +94,7 @@ module SwiftypeEnterprise
       #
       # @return [Array<String>] an Array of Document Receipt IDs pending completion
       #
-      # @raise [SwiftypeEnterprise::InvalidDocument] when fields are missing or unsupported fields are supplied
+      # @raise [SwiftypeEnterprise::InvalidDocument] when a single document is missing required fields or contains unsupported fields
       def async_index_documents(content_source_key, documents, options = {})
         documents = Array(documents).map! { |document| validate_and_normalize_document(document) }
 
