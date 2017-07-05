@@ -4,7 +4,7 @@ require 'swiftype-enterprise/version'
 module SwiftypeEnterprise
   module Configuration
     DEFAULT_ENDPOINT = "https://api.swiftype.com/api/v1/"
-    DEFAULT_USER_AGENT = "SwiftypeEnterprise-Ruby/#{SwiftypeEnterprise::VERSION}"
+    DEFAULT_USER_AGENT = "swiftype-enterprise-ruby/#{SwiftypeEnterprise::VERSION}"
 
     VALID_OPTIONS_KEYS = [
       :access_token,
