@@ -1,58 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://localhost:3002/api/v1/ent/sources/59542d332139de0acacc7dd4/documents/bulk_create.json
-    body:
-      encoding: UTF-8
-      string: '[{"external_id":"INscMGmhmX4","url":"http://www.youtube.com/watch?v=v1uyQZNg2vE","title":"The
-        Original Grumpy Cat","body":"this is a test\na_new_field: some value"},{"external_id":"JNDFojsd02","url":"http://www.youtube.com/watch?v=tsdfhk2j","title":"Another
-        Grumpy Cat","body":"this is also a test"}]'
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - SwiftypeEnterprise-Ruby/1.0.0
-      Content-Type:
-      - application/json
-      Authorization:
-      - Bearer cGUN-vBokevBhhzyA669
-  response:
-    status:
-      code: 202
-      message: Accepted
-    headers:
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      Content-Type:
-      - application/json; charset=utf-8
-      Cache-Control:
-      - no-cache
-      Set-Cookie:
-      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTczZTBhZmUyNGMyMDJiMTAzMWNjZDlkMDY3ODQ2YzcyBjsAVA%3D%3D--c82c5b797014cbda84cdf73408fe2af71a00986c;
-        path=/; expires=Wed, 30 Jun 2027 00:36:47 -0000; HttpOnly
-      X-Request-Id:
-      - 7add3a71-5e8a-4a37-bacc-58b2114be10e
-      X-Runtime:
-      - '1.914340'
-      Connection:
-      - close
-      Server:
-      - thin 1.5.0 codename Knife
-    body:
-      encoding: UTF-8
-      string: '{"batch_link":"http://localhost:3002/api/v1/ent/document_receipts/bulk_show?ids=59559d1d2139deb77b971ae4%2C59559d1e2139deb77b971ae6","document_receipts":[{"id":"59559d1d2139deb77b971ae4","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/59559d1d2139deb77b971ae4"}},{"id":"59559d1e2139deb77b971ae6","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/59559d1e2139deb77b971ae6"}}]}'
-    http_version: 
-  recorded_at: Fri, 30 Jun 2017 00:36:47 GMT
-- request:
     method: get
-    uri: http://localhost:3002/api/v1/ent/document_receipts/bulk_show.json?ids=59559d1d2139deb77b971ae4,59559d1e2139deb77b971ae6
+    uri: http://localhost:3002/api/v1/ent/document_receipts/bulk_show.json?ids=595d27492139de865a19820e,595d27492139de865a198210
     body:
       encoding: US-ASCII
       string: ''
@@ -81,28 +31,28 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"7321cee676f2037c66fe3bf9884e86c4"
+      - W/"36a13162024b5c94fb2119b3184343d9"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTliNzgwMDljYWI1M2Q3YWRkYjllODFlNjBmMzcxMjYwBjsAVA%3D%3D--2a39e8d4f88d3c0b6d1107052368c36dc7802bf5;
-        path=/; expires=Wed, 30 Jun 2027 00:36:47 -0000; HttpOnly
+      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJWFiNmUxNjI2YTMyMzViNGEwNjRlZGRkYWIxMTRmMDZkBjsAVA%3D%3D--500b4e7e09c7aa8cd43a00231aa876e1eeb97817;
+        path=/; expires=Mon, 05 Jul 2027 17:52:10 -0000; HttpOnly
       X-Request-Id:
-      - 74cee7e8-4169-4098-bb78-11d482424410
+      - 929764cb-27b1-4e72-89f8-336ecef668f3
       X-Runtime:
-      - '0.502529'
+      - '0.195985'
       Connection:
       - close
       Server:
       - thin 1.5.0 codename Knife
     body:
       encoding: UTF-8
-      string: '[{"id":"59559d1d2139deb77b971ae4","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/59559d1d2139deb77b971ae4"}},{"id":"59559d1e2139deb77b971ae6","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/59559d1e2139deb77b971ae6"}}]'
+      string: '[{"id":"595d27492139de865a19820e","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/595d27492139de865a19820e"}},{"id":"595d27492139de865a198210","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/595d27492139de865a198210"}}]'
     http_version: 
-  recorded_at: Fri, 30 Jun 2017 00:36:47 GMT
+  recorded_at: Wed, 05 Jul 2017 17:52:10 GMT
 - request:
     method: get
-    uri: http://localhost:3002/api/v1/ent/document_receipts/bulk_show.json?ids=59559d1d2139deb77b971ae4,59559d1e2139deb77b971ae6
+    uri: http://localhost:3002/api/v1/ent/document_receipts/bulk_show.json?ids=595d27492139de865a19820e,595d27492139de865a198210
     body:
       encoding: US-ASCII
       string: ''
@@ -131,28 +81,28 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"7321cee676f2037c66fe3bf9884e86c4"
+      - W/"36a13162024b5c94fb2119b3184343d9"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTZiYzk5ZGY0NjBjM2MwOTE2NTQ4NGNhM2FmNzBlNDI5BjsAVA%3D%3D--8391c3c5b2cf7a473214fa42e67cb59a25153031;
-        path=/; expires=Wed, 30 Jun 2027 00:36:48 -0000; HttpOnly
+      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTkyMWYxZmY1YmUyYmFkMTZmZWY5ZjViNDQzZjY1ZTYzBjsAVA%3D%3D--07ecadd344a6bff7cac53924f2021d0ea9950cf8;
+        path=/; expires=Mon, 05 Jul 2027 17:52:10 -0000; HttpOnly
       X-Request-Id:
-      - 9fe65c9a-fcb6-40c9-baf6-e9575a37018d
+      - 806c4572-464b-413f-8a72-68d2bf9c0419
       X-Runtime:
-      - '0.335490'
+      - '0.124933'
       Connection:
       - close
       Server:
       - thin 1.5.0 codename Knife
     body:
       encoding: UTF-8
-      string: '[{"id":"59559d1d2139deb77b971ae4","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/59559d1d2139deb77b971ae4"}},{"id":"59559d1e2139deb77b971ae6","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/59559d1e2139deb77b971ae6"}}]'
+      string: '[{"id":"595d27492139de865a19820e","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/595d27492139de865a19820e"}},{"id":"595d27492139de865a198210","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/595d27492139de865a198210"}}]'
     http_version: 
-  recorded_at: Fri, 30 Jun 2017 00:36:48 GMT
+  recorded_at: Wed, 05 Jul 2017 17:52:10 GMT
 - request:
     method: get
-    uri: http://localhost:3002/api/v1/ent/document_receipts/bulk_show.json?ids=59559d1d2139deb77b971ae4,59559d1e2139deb77b971ae6
+    uri: http://localhost:3002/api/v1/ent/document_receipts/bulk_show.json?ids=595d27492139de865a19820e,595d27492139de865a198210
     body:
       encoding: US-ASCII
       string: ''
@@ -181,23 +131,23 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"8af6b8fc44aabca14d763242c1d761f3"
+      - W/"a66e0556584fc4e277f2cf614f413938"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTc0Mjg1MWMwZGQxM2Y1M2FhNTA4ZmEzMWU0NGU5NzE1BjsAVA%3D%3D--c2e04b8db85eb7514c9549fa89fd2b5f09e3a633;
-        path=/; expires=Wed, 30 Jun 2027 00:36:48 -0000; HttpOnly
+      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTE2N2IzMDY4NjY3NWFkMDYyNWM4OGI3OTQ2MDRkNTgxBjsAVA%3D%3D--1110c02d4c67762f709f53e3556a75abdb11c408;
+        path=/; expires=Mon, 05 Jul 2027 17:52:10 -0000; HttpOnly
       X-Request-Id:
-      - 78869040-e727-4f5a-83b8-57266242c7ba
+      - 9858a835-0799-421e-a860-0b261f685a61
       X-Runtime:
-      - '0.386772'
+      - '0.452000'
       Connection:
       - close
       Server:
       - thin 1.5.0 codename Knife
     body:
       encoding: UTF-8
-      string: '[{"id":"59559d1d2139deb77b971ae4","external_id":"INscMGmhmX4","status":"complete","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/59559d1d2139deb77b971ae4"}},{"id":"59559d1e2139deb77b971ae6","external_id":"JNDFojsd02","status":"complete","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/59559d1e2139deb77b971ae6"}}]'
+      string: '[{"id":"595d27492139de865a19820e","external_id":"INscMGmhmX4","status":"complete","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/595d27492139de865a19820e"}},{"id":"595d27492139de865a198210","external_id":"JNDFojsd02","status":"complete","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/595d27492139de865a198210"}}]'
     http_version: 
-  recorded_at: Fri, 30 Jun 2017 00:36:48 GMT
+  recorded_at: Wed, 05 Jul 2017 17:52:10 GMT
 recorded_with: VCR 3.0.3

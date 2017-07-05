@@ -71,6 +71,7 @@ module SwiftypeEnterprise
       #
       # @return [Array<Hash>] an Array of processed Document Receipt hashes
       #
+      # @raise [SwiftypeEnterprise::InvalidDocument] when fields are missing or unsupported fields are supplied
       # @raise [Timeout::Error] when timeout expires waiting for receipts
       def index_documents(content_source_key, documents, options = {})
         documents = Array(documents).map! { |document| validate_and_normalize_document(document) }
@@ -92,6 +93,8 @@ module SwiftypeEnterprise
       # @param [Hash] options additional options
       #
       # @return [Array<String>] an Array of Document Receipt IDs pending completion
+      #
+      # @raise [SwiftypeEnterprise::InvalidDocument] when fields are missing or unsupported fields are supplied
       def async_index_documents(content_source_key, documents, options = {})
         documents = Array(documents).map! { |document| validate_and_normalize_document(document) }
 
@@ -116,22 +119,14 @@ module SwiftypeEnterprise
 
       def validate_and_normalize_document(document)
         document = Utils.stringify_keys(document)
-        missing_keys = REQUIRED_TOP_LEVEL_KEYS - document.keys
+        document_keys = document.keys.to_set
+        missing_keys = REQUIRED_TOP_LEVEL_KEYS - document_keys
         raise SwiftypeEnterprise::InvalidDocument.new("missing required fields (#{missing_keys.to_a.join(', ')})") if missing_keys.any?
 
-        normalized_document = {}
+        surplus_keys = document_keys - CORE_TOP_LEVEL_KEYS
+        raise SwiftypeEnterprise::InvalidDocument.new("unsupported fields supplied (#{surplus_keys.to_a.join(', ')}), supported fields are (#{CORE_TOP_LEVEL_KEYS.to_a.join(', ')})") if surplus_keys.any?
 
-        body_content = [document.delete('body')]
-        document.each do |key, value|
-          if CORE_TOP_LEVEL_KEYS.include?(key)
-            normalized_document[key] = value
-          else
-            body_content << "#{key}: #{value}"
-          end
-        end
-        normalized_document['body'] = body_content.join("\n")
-
-        normalized_document
+        document
       end
     end
 

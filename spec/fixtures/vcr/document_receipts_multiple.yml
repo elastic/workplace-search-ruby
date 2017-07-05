@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3002/api/v1/ent/document_receipts/bulk_show.json?ids=595d27492139de865a19820e,595d27492139de865a198210
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - SwiftypeEnterprise-Ruby/1.0.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer cGUN-vBokevBhhzyA669
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"36a13162024b5c94fb2119b3184343d9"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTkzNTQyODIzMTc0YTRjZDViYjZlYjA0OWMzY2U1ZjBlBjsAVA%3D%3D--e1d100ba4dab5934527ac0ff12a0ac5daf5156df;
+        path=/; expires=Mon, 05 Jul 2027 17:52:09 -0000; HttpOnly
+      X-Request-Id:
+      - a8fada16-131d-4a45-bc5c-72e0218a17df
+      X-Runtime:
+      - '0.131438'
+      Connection:
+      - close
+      Server:
+      - thin 1.5.0 codename Knife
+    body:
+      encoding: UTF-8
+      string: '[{"id":"595d27492139de865a19820e","external_id":"INscMGmhmX4","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/595d27492139de865a19820e"}},{"id":"595d27492139de865a198210","external_id":"JNDFojsd02","status":"pending","errors":[],"links":{"document_receipt":"http://localhost:3002/api/v1/ent/document_receipts/595d27492139de865a198210"}}]'
+    http_version: 
+  recorded_at: Wed, 05 Jul 2017 17:52:09 GMT
+recorded_with: VCR 3.0.3

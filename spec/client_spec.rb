@@ -76,17 +76,14 @@ describe SwiftypeEnterprise::Client do
         documents = [{'external_id'=>'INscMGmhmX4', 'url' => 'http://www.youtube.com/watch?v=v1uyQZNg2vE'}]
         expect do
           client.index_documents(content_source_key, documents)
-        end.to raise_error(SwiftypeEnterprise::InvalidDocument)
+        end.to raise_error(SwiftypeEnterprise::InvalidDocument, 'missing required fields (title, body)')
       end
 
-      it 'should accept non-core document fields' do
+      it 'should reject non-core document fields' do
         documents.first['a_new_field'] = 'some value'
-        VCR.use_cassette(:async_create_or_update_document_success) do
-          VCR.use_cassette(:document_receipts_multiple_complete) do
-            response = client.index_documents(content_source_key, documents)
-            expect(response.map { |a| a["status"] }).to eq(["complete", "complete"])
-          end
-        end
+        expect {
+          client.index_documents(content_source_key, documents)
+        }.to raise_error(SwiftypeEnterprise::InvalidDocument, 'unsupported fields supplied (a_new_field), supported fields are (external_id, url, title, body, created_at, updated_at, type)')
       end
     end
 

@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3002/api/v1/ent/sources/59542d332139de0acacc7dd4/documents/bulk_destroy.json
+    body:
+      encoding: UTF-8
+      string: '["INscMGmhmX4"]'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - SwiftypeEnterprise-Ruby/1.0.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer cGUN-vBokevBhhzyA669
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"ab494a471abdde82a270b9d9562b7bb9"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _st_main_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFVEkiJTQ5ZGE4NjY4ZjZmY2Q2OTM2MGM0OTIyMDFkNmRmMzFlBjsAVA%3D%3D--75e0f9002e5f32100e4814a9dc015ffd43a5b6eb;
+        path=/; expires=Mon, 05 Jul 2027 17:52:12 -0000; HttpOnly
+      X-Request-Id:
+      - ec1754ea-5fa3-474f-87ba-e754e4c62553
+      X-Runtime:
+      - '1.367282'
+      Connection:
+      - close
+      Server:
+      - thin 1.5.0 codename Knife
+    body:
+      encoding: UTF-8
+      string: '[{"external_id":"INscMGmhmX4","success":true}]'
+    http_version: 
+  recorded_at: Wed, 05 Jul 2017 17:52:12 GMT
+recorded_with: VCR 3.0.3
