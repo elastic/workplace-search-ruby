@@ -26,13 +26,13 @@ See the async_index_documents method below for an example on how to index docume
     content_source_key = '' // your content source key
     documents = [
       {
-        'external_id'=>'INscMGmhmX4',
+        'external_id' => 'INscMGmhmX4',
         'url' => 'http://www.youtube.com/watch?v=v1uyQZNg2vE',
         'title' => 'The Original Grumpy Cat',
         'body' => 'this is a test'
       },
       {
-        'external_id'=>'JNDFojsd02',
+        'external_id' => 'JNDFojsd02',
         'url' => 'http://www.youtube.com/watch?v=tsdfhk2j',
         'title' => 'Another Grumpy Cat',
         'body' => 'this is also a test'
@@ -66,13 +66,13 @@ When using this method, you are responsible for checking the indexing result for
     content_source_key = '' // your content source key
     documents = [
       {
-        'external_id'=>'INscMGmhmX4',
+        'external_id' => 'INscMGmhmX4',
         'url' => 'http://www.youtube.com/watch?v=v1uyQZNg2vE',
         'title' => 'The Original Grumpy Cat',
         'body' => 'this is a test'
       },
       {
-        'external_id'=>'JNDFojsd02',
+        'external_id' => 'JNDFojsd02',
         'url' => 'http://www.youtube.com/watch?v=tsdfhk2j',
         'title' => 'Another Grumpy Cat',
         'body' => 'this is also a test'
