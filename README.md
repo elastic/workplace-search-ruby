@@ -1,16 +1,30 @@
-# Ruby client for the Swiftype Enterprise Api
+<p align="center"><img src="https://github.com/swiftype/swiftype-enterprise-ruby/blob/master/logo-enterprise-search.png?raw=true" alt="Elastic Enterprise Search Logo"></p>
 
-## Installation
+<a href="https://github.com/swiftype/swiftype-enterprise-ruby/releases"><img src="https://img.shields.io/github/release/swiftype/swiftype-enterprise-ruby/all.svg?style=flat-square" alt="GitHub release" /></a></p>
+
+> A first-party Ruby client for [Elastic Enterprise Search](https://www.elastic.co/solutions/enterprise-search).
+
+## Contents
+
++ [Getting started](#getting-started-)
++ [Usage](#usage)
++ [FAQ](#faq-)
++ [Contribute](#contribute-)
++ [License](#license-)
+
+***
+
+## Getting started 🐣
 
 To install the gem, execute:
 
-    gem install swiftype-enterprise
+```bash
+gem install swiftype-enterprise
+```
 
 Or place `gem 'swiftype-enterprise', '~> 1.0.0` in your `Gemfile` and run `bundle install`.
 
 ## Usage
-
-### Setup
 
 Create a new instance of the Swiftype Enterprise Client with your access token:
 
@@ -20,6 +34,7 @@ Create a new instance of the Swiftype Enterprise Client with your access token:
 ### Indexing Documents
 
 This example shows how to use the index_documents method, which blocks until all documents have either completed or failed indexing.
+
 If not all of the documents have completed or failed indexing within 10 seconds, an Error is raised.
 See the async_index_documents method below for an example on how to index documents without blocking.
 
@@ -101,11 +116,29 @@ Works in conjunction with the asyncIndexDocuments method above.
       # handle error
     end
 
+## Running tests
 
-## Running Tests
+Run tests via rspec:
 
-    rspec
+```bash
+$ rspec
+```
 
-## Contributions
+## FAQ 🔮
 
-  To contribute code to this gem, please fork the repository and submit a pull request.
+### Where do I report issues with the client?
+
+If something is not working as expected, please open an [issue](https://github.com/swiftype/swiftype-enterprise-ruby/issues/new).
+
+## Contribute 🚀
+
+We welcome contributors to the project. Before you begin, a couple notes...
+
++ Before opening a pull request, please create an issue to [discuss the scope of your proposal](https://github.com/swiftype/swiftype-enterprise-ruby/issues).
++ Please write simple code and concise documentation, when appropriate.
+
+## License 📗
+
+[MIT](https://github.com/swiftype/swiftype-enterprise-ruby/blob/master/LICENSE) © [Elastic](https://github.com/elastic)
+
+Thank you to all the [contributors](https://github.com/swiftype/swiftype-enterprise-ruby/graphs/contributors)!
