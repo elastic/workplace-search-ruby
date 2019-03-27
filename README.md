@@ -63,7 +63,7 @@ See the async_index_documents method below for an example on how to index docume
 
 ### Destroying Documents
 
-    content_source_key = '' // your content source key
+    content_source_key = '' # your content source key
     document_external_ids = ['INscMGmhmX4', 'JNDFojsd02']
 
     begin
@@ -78,7 +78,7 @@ See the async_index_documents method below for an example on how to index docume
 This example shows how to index documents without blocking.
 When using this method, you are responsible for checking the indexing result for each document by using the document_receipts method below.
 
-    content_source_key = '' // your content source key
+    content_source_key = '' # your content source key
     documents = [
       {
         'external_id' => 'INscMGmhmX4',
@@ -106,7 +106,7 @@ When using this method, you are responsible for checking the indexing result for
 
 Works in conjunction with the asyncIndexDocuments method above.
 
-    content_source_key = '' // your content source key
+    content_source_key = '' # your content source key
     document_receipt_ids = ['5955d6fafd28400169baf97e', '5955d6fafd28400169baf980'] // from calling async_index_documents
 
     begin
