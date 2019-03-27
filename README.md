@@ -38,7 +38,7 @@ This example shows how to use the index_documents method, which blocks until all
 If not all of the documents have completed or failed indexing within 10 seconds, an Error is raised.
 See the async_index_documents method below for an example on how to index documents without blocking.
 
-    content_source_key = '' // your content source key
+    content_source_key = '' # your content source key
     documents = [
       {
         'external_id' => 'INscMGmhmX4',
