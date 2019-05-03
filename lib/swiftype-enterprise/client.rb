@@ -21,7 +21,7 @@ module SwiftypeEnterprise
     # @option options [Numeric] :overall_timeout overall timeout for requests in seconds (default: 15s)
     # @option options [Numeric] :open_timeout the number of seconds Net::HTTP (default: 15s)
     #   will wait while opening a connection before raising a Timeout::Error
-    def initialize(options={})
+    def initialize(options = {})
       @options = options
     end
 
@@ -54,52 +54,19 @@ module SwiftypeEnterprise
       ].map!(&:freeze).to_set.freeze
       CORE_TOP_LEVEL_KEYS = (REQUIRED_TOP_LEVEL_KEYS + OPTIONAL_TOP_LEVEL_KEYS).freeze
 
-      # Retrieve Document Receipts from the API by ID for the {asynchronous API}[https://app.swiftype.com/ent/docs/custom_sources]
-      #
-      # @param [Array<String>] receipt_ids an Array of Document Receipt IDs
-      #
-      # @return [Array<Hash>] an Array of Document Receipt hashes
-      def document_receipts(receipt_ids)
-        get('ent/document_receipts/bulk_show.json', :ids => receipt_ids.join(','))
-      end
-
-      # Index a batch of documents synchronously using the {Content Source API}[https://app.swiftype.com/ent/docs/custom_sources].
+      # Index a batch of documents using the {Content Source API}[https://app.swiftype.com/ent/docs/custom_sources].
       #
       # @param [String] content_source_key the unique Content Source key as found in your Content Sources dashboard
       # @param [Array] documents an Array of Document Hashes
-      # @option options [Numeric] :timeout (10) Number of seconds to wait before raising an exception
       #
-      # @return [Array<Hash>] an Array of processed Document Receipt hashes
-      #
-      # @raise [SwiftypeEnterprise::InvalidDocument] when a single document is missing required fields or contains unsupported fields
-      # @raise [Timeout::Error] when timeout expires waiting for receipts
-      def index_documents(content_source_key, documents, options = {})
-        documents = Array(documents).map! { |document| validate_and_normalize_document(document) }
-
-        res = async_create_or_update_documents(content_source_key, documents)
-        receipt_ids = res['document_receipts'].map { |a| a['id'] }
-
-        poll(options) do
-          receipts = document_receipts(receipt_ids)
-          flag = receipts.all? { |a| a['status'] != 'pending' }
-          flag ? receipts : false
-        end
-      end
-
-      # Index a batch of documents asynchronously using the {Content Source API}[https://app.swiftype.com/ent/docs/custom_sources].
-      #
-      # @param [String] content_source_key the unique Content Source key as found in your Content Sources dashboard
-      # @param [Array] documents an Array of Document Hashes
-      # @param [Hash] options additional options
-      #
-      # @return [Array<String>] an Array of Document Receipt IDs pending completion
+      # @return [Array<Hash>] an Array of Document indexing Results
       #
       # @raise [SwiftypeEnterprise::InvalidDocument] when a single document is missing required fields or contains unsupported fields
-      def async_index_documents(content_source_key, documents, options = {})
+      # @raise [Timeout::Error] when timeout expires waiting for results
+      def index_documents(content_source_key, documents)
         documents = Array(documents).map! { |document| validate_and_normalize_document(document) }
 
-        res = async_create_or_update_documents(content_source_key, documents)
-        res['document_receipts'].map { |a| a['id'] }
+        async_create_or_update_documents(content_source_key, documents)
       end
 
       # Destroy a batch of documents given a list of external IDs
@@ -107,12 +74,15 @@ module SwiftypeEnterprise
       # @param [Array<String>] document_ids an Array of Document External IDs
       #
       # @return [Array<Hash>] an Array of Document destroy result hashes
+      #
+      # @raise [Timeout::Error] when timeout expires waiting for results
       def destroy_documents(content_source_key, document_ids)
         document_ids = Array(document_ids)
         post("ent/sources/#{content_source_key}/documents/bulk_destroy.json", document_ids)
       end
 
       private
+
       def async_create_or_update_documents(content_source_key, documents)
         post("ent/sources/#{content_source_key}/documents/bulk_create.json", documents)
       end

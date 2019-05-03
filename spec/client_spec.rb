@@ -30,70 +30,11 @@ describe SwiftypeEnterprise::Client do
                'body' => 'this is also a test'}]
     end
 
-    context '#document_receipts' do
-      before :each do
-        def get_receipt_ids
-          receipt_ids = nil
-          VCR.use_cassette(:async_create_or_update_document_success) do
-            receipt_ids = client.async_index_documents(content_source_key, documents)
-          end
-          receipt_ids
-        end
-      end
-
-      it 'returns array of hashes one for each receipt' do
-        VCR.use_cassette(:document_receipts_multiple) do
-          receipt_ids = get_receipt_ids
-          response = client.document_receipts(receipt_ids)
-          expect(response.size).to eq(2)
-          expect(response.first.keys).to match_array(["id", "external_id", "links", "status", "errors"])
-        end
-      end
-    end
-
     context '#index_documents' do
-      it 'returns document_receipts when successful' do
+      it 'returns results when successful' do
         VCR.use_cassette(:async_create_or_update_document_success) do
-          VCR.use_cassette(:document_receipts_multiple_complete) do
-            response = client.index_documents(content_source_key, documents)
-            expect(response.map(&:keys).map(&:sort)).to eq([["errors", "external_id", "id", "links", "status"], ["errors", "external_id", "id", "links", "status"]])
-            expect(response.map { |a| a["status"] }).to eq(["complete", "complete"])
-          end
-        end
-      end
-
-      it 'should timeout if the process takes longer than the timeout option passed' do
-        allow(client).to receive(:document_receipts) { sleep 0.05 }
-
-        VCR.use_cassette(:async_create_or_update_document_success) do
-          expect do
-            client.index_documents(content_source_key, documents, :timeout => 0.01)
-          end.to raise_error(Timeout::Error)
-        end
-      end
-
-      it 'should validate required document fields' do
-        documents = [{'external_id'=>'INscMGmhmX4', 'url' => 'http://www.youtube.com/watch?v=v1uyQZNg2vE'}]
-        expect do
-          client.index_documents(content_source_key, documents)
-        end.to raise_error(SwiftypeEnterprise::InvalidDocument, 'missing required fields (title, body)')
-      end
-
-      it 'should reject non-core document fields' do
-        documents.first['a_new_field'] = 'some value'
-        expect {
-          client.index_documents(content_source_key, documents)
-        }.to raise_error(SwiftypeEnterprise::InvalidDocument, 'unsupported fields supplied (a_new_field), supported fields are (external_id, url, title, body, created_at, updated_at, type)')
-      end
-    end
-
-    context '#async_index_documents' do
-      it 'returns receipt IDs when successful' do
-        VCR.use_cassette(:async_create_or_update_document_success) do
-          VCR.use_cassette(:document_receipts_multiple_complete) do
-            response = client.async_index_documents(content_source_key, documents)
+          response = client.index_documents(content_source_key, documents)
             expect(response.size).to eq(2)
-          end
         end
       end
     end
