@@ -5,8 +5,6 @@
 >
 > **swiftype-enterprise has been replaced by elastic-enterprise-search. Thank you! - Elastic**
 
-<a href="https://github.com/swiftype/swiftype-enterprise-ruby/releases"><img src="https://img.shields.io/github/release/swiftype/swiftype-enterprise-ruby/all.svg?style=flat-square" alt="GitHub release" /></a></p>
-
 > A first-party Ruby client for [Elastic Enterprise Search](https://www.elastic.co/solutions/enterprise-search).
 
 ## Contents
