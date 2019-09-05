@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.email       = ["support@swiftype.com"]
   s.homepage    = "https://swiftype.com"
   s.summary     = %q{Deprecated gem for accessing the Swiftype Enterprise Search API. Use elastic-enterprise-search instead.}
-  s.description = %q{API client for accessing the Swiftype Enterprise API with no dependencies.}
+  s.description = %q{Deprecated API client for accessing the Swiftype Enterprise Search API with no dependencies. Use elastic-enterprise-search instead.}
   s.post_install_message = "DEPRECATION WARNING: The swiftype-enterprise gem has been deprecated and replaced by elastic-enterprise-search"
 
   s.files         = `git ls-files`.split("\n")
