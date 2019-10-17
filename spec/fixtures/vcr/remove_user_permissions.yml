@@ -18,7 +18,7 @@ http_interactions:
       X-Swiftype-Client:
       - elastic-enterprise-search-ruby
       X-Swiftype-Client-Version:
-      - 0.2.1
+      - 0.3.0
       Authorization:
       - Bearer xyT3mm3ecPsPuYxd_6fX
   response:

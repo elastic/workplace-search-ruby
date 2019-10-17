@@ -18,7 +18,7 @@ http_interactions:
       X-Swiftype-Client:
       - elastic-enterprise-search-ruby
       X-Swiftype-Client-Version:
-      - 0.2.1
+      - 0.3.0
       Authorization:
       - Bearer xyT3mm3ecPsPuYxd_6fX
   response:
@@ -50,6 +50,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"meta":{"page":{"current":2,"total_pages":1,"total_results":2,"size":5}},"results":[]}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 08 Oct 2019 17:58:09 GMT
 recorded_with: VCR 3.0.3
