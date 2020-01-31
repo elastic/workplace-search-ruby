@@ -1,1 +1,0 @@
-require 'elastic/enterprise-search'
