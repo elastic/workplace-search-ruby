@@ -20,7 +20,7 @@ To install the gem, execute:
 gem install elastic-workplace-search
 ```
 
-Or place `gem 'elastic-workplace-search', '~> 0.3.0` in your `Gemfile` and run `bundle install`.
+Or place `gem 'elastic-workplace-search', '~> 0.4.0` in your `Gemfile` and run `bundle install`.
 
 ## Usage
 
