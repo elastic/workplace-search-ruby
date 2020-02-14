@@ -7,8 +7,9 @@ Gem::Specification.new do |s|
   s.authors     = ["Quin Hoxie"]
   s.email       = ["support@elastic.co"]
   s.homepage    = "https://github.com/elastic/enterprise-search-ruby"
-  s.summary     = %q{Official gem for accessing the Elastic Enterprise Search API}
-  s.description = %q{API client for accessing the Elastic Enterprise Search API with no dependencies.}
+  s.summary     = %q{Deprecated gem for accessing the Elastic Workplace Search API. Use elastic-workplace-search instead.}
+  s.description = %q{Deprecated API client for accessing the Elastic Workplace Search API. Use elastic-workplace-search instead.}
+  s.post_install_message = "DEPRECATION WARNING: The elastic-enterprise-search gem has been deprecated and replaced by elastic-workplace-search."
   s.licenses    = ['Apache-2.0']
 
   s.files         = `git ls-files`.split("\n")
