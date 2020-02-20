@@ -104,7 +104,6 @@ module Elastic
         req['X-Swiftype-Client'] = CLIENT_NAME
         req['X-Swiftype-Client-Version'] = CLIENT_VERSION
         req['Authorization'] = "Bearer #{access_token}"
-        puts req
 
         req
       end
