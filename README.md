@@ -1,4 +1,4 @@
- <p align="center"><a href="https://circleci.com/gh/elastic/workplace-search-ruby"><img src="https://circleci.com/gh/elastic/workplace-search-ruby.svg?style=svg" alt="CircleCI build"></a></p>
+![](https://github.com/elastic/workplace-search-ruby/workflows/master/badge.svg)
 
 > A first-party Ruby client for [Elastic Workplace Search](https://www.elastic.co/workplace-search).
 
@@ -23,6 +23,8 @@ gem install elastic-workplace-search
 Or place `gem 'elastic-workplace-search', '~> 0.4.1` in your `Gemfile` and run `bundle install`.
 
 ## Usage
+
+In your Elastic Workplace Search dashboard navigate to Sources/Add a Shared Content Source/Custom API Source to create a new source. Name your source (e.g. `Workplace Search Ruby Client`) and once it's created you'll get an `access token` and a `key`. You'll need these in the following steps.
 
 Create a new instance of the Elastic Workplace Search client with your access token:
 
