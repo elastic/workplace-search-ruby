@@ -44,7 +44,7 @@ Elastic::WorkplaceSearch.endpoint = 'https://your-server.example.com/api/ws/v1'
 ### Specifying an HTTP Proxy
 
 ```ruby
-client = Elastic::WorkplaceSearch::Client.new(:proxy => 'http://localhost:8888')
+client = Elastic::WorkplaceSearch::Client.new(proxy: 'http://localhost:8888')
 ```
 
 ### Documents
@@ -107,7 +107,7 @@ client.list_all_permissions(content_source_key)
 ```ruby
 content_source_key = '' # your content source key
 
-client.list_all_permissions(content_source_key, :current => 2, :size => 20)
+client.list_all_permissions(content_source_key, current: 2, size: 20)
 ```
 
 #### Retrieve a User's permissions
@@ -125,7 +125,7 @@ content_source_key = '' # your content source key
 user = 'enterprise_search'
 permissions = ['permission1']
 
-client.add_user_permissions(content_source_key, user, :permissions => permissions)
+client.add_user_permissions(content_source_key, user, permissions: permissions)
 ```
 
 #### Update a User's permissions
@@ -134,7 +134,7 @@ content_source_key = '' # your content source key
 user = 'enterprise_search'
 permissions = ['permission2']
 
-client.update_user_permissions(content_source_key, user, :permissions => permissions)
+client.update_user_permissions(content_source_key, user, permissions: permissions)
 ```
 
 #### Remove permissions from a User
@@ -143,7 +143,7 @@ content_source_key = '' # your content source key
 user = 'enterprise_search'
 permissions = ['permission2']
 
-client.remove_user_permissions(content_source_key, user, :permissions => permissions)
+client.remove_user_permissions(content_source_key, user, permissions: permissions)
 ```
 
 ## Running tests
