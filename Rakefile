@@ -8,6 +8,5 @@ RSpec::Core::RakeTask.new(:spec)
 
 desc 'Generate code from JSON API spec'
 task :generate do
-  generator = Elastic::Generator.new
-  generator.generate
+  Elastic::Generator.generate
 end
