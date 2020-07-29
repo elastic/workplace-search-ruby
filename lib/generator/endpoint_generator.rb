@@ -18,6 +18,11 @@ module Elastic
   module Generator
     # Generates code for REST API Endpoints
     class EndpointGenerator
+      ALIASES = {
+        put_user_permissions: :update_user_permissions,
+        delete_documents: :destroy_documents
+      }.freeze
+
       def initialize(spec)
         @spec = spec
         @target_dir = "#{Generator::CURRENT_PATH}/api/".freeze
@@ -46,7 +51,7 @@ module Elastic
       end
 
       def replace_path_variables(path)
-        path.gsub(/{([a-z_]+)}/, '#{params[:\1]}')
+        path.gsub(/{([a-z_]+)}/, '#{\1}')
       end
 
       def setup_values!(endpoint)
@@ -79,6 +84,12 @@ module Elastic
         @params.select { |p| p['required'] }
       end
 
+      def print_required_params
+        required_params.map do |param|
+          param['name']
+        end.join(', ')
+      end
+
       def generate_method_code
         template = "#{Generator::CURRENT_PATH}/templates/endpoint_template.erb"
         code = ERB.new(File.read(template), nil, '-')
@@ -106,6 +117,12 @@ module Elastic
         @params.map do |param|
           "# @option #{param['name']} - #{param['description']}" + ' (*Required*)' if param['required']
         end.join("\n")
+      end
+
+      def aliases
+        return unless ALIASES[@method_name.to_sym]
+
+        "alias_method :#{@method_name}, :#{ALIASES[@method_name.to_sym]}"
       end
     end
   end

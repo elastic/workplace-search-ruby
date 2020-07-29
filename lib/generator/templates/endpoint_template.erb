@@ -5,10 +5,10 @@ module Elastic
     class Client
       module <%= @module_name %>
         <%= @doc -%>
-        def <%= @method_name %>(parameters = {})
+        def <%= @method_name %>(<%= print_required_params %>, parameters = {})
           <% required_params.map do |required|
               name = required['name'] -%>
-            raise ArgumentError, "Required parameter '<%= name %>' missing" unless parameters[:<%= name %>]
+            raise ArgumentError, "Required parameter '<%= name %>' missing" unless <%= name %>
           <% end -%>
 
           request(
@@ -17,6 +17,8 @@ module Elastic
             parameters
           )
         end
+
+        <%= aliases %>
       end
     end
   end
