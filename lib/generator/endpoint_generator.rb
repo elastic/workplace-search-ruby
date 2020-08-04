@@ -18,6 +18,7 @@ module Elastic
   module Generator
     # Generates code for REST API Endpoints
     class EndpointGenerator
+      TARGET_DIR = File.expand_path(__dir__ + '../../elastic/workplace-search/api').freeze
       ALIASES = {
         put_user_permissions: :update_user_permissions,
         delete_documents: :destroy_documents
@@ -25,11 +26,11 @@ module Elastic
 
       def initialize(spec)
         @spec = spec
-        @target_dir = "#{Generator::CURRENT_PATH}/api/".freeze
       end
 
       def generate
-        Utils.empty_directory(@target_dir)
+        Dir.mkdir(TARGET_DIR) unless File.directory?(TARGET_DIR)
+        Utils.empty_directory(TARGET_DIR)
 
         # for each endpoint in the spec generate the code
         @spec['paths'].each do |endpoints|
@@ -45,7 +46,7 @@ module Elastic
         endpoints[1].each do |method, endpoint|
           @http_method = method
           setup_values!(endpoint)
-          file_name = "#{@target_dir}#{@method_name}.rb"
+          file_name = "#{TARGET_DIR}/#{@method_name}.rb"
           Utils.write_file(file_name, generate_method_code)
         end
       end

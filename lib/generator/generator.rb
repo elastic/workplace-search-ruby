@@ -26,16 +26,16 @@ module Elastic
     CURRENT_PATH = File.dirname(__FILE__).freeze
 
     def self.generate
-      spec = load_spec
+      workplace_spec = load_spec(:workplace)
 
       # Generate endpoint code:
-      EndpointGenerator.new(spec).generate
+      EndpointGenerator.new(workplace_spec).generate
       # Generate specs:
       # generate specs(endpoints)
     end
 
-    def self.load_spec
-      file = CURRENT_PATH + '/workplace-search.json'
+    def self.load_spec(name)
+      file = CURRENT_PATH + "/json/#{name}-search.json"
       JSON.parse(File.read(file))
     end
   end
