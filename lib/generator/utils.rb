@@ -26,12 +26,11 @@ module Elastic
       def self.write_file(file_name, content)
         # file_name = "#{TARGET_DIR}#{@method_name}.rb"
         File.open(file_name, 'w') { |f| f.puts content }
-        run_rubocop(file_name)
         puts colorize(:green, "\nSuccessfully generated #{file_name}.rb\n\n")
       end
 
-      def self.run_rubocop(file)
-        system("rubocop -c ./.rubocop.yml --format autogenconf -x #{file}")
+      def self.run_rubocop(dir)
+        system("rubocop -c ./.rubocop.yml --format autogenconf -x #{dir}")
       end
 
       def self.module_name(tag)

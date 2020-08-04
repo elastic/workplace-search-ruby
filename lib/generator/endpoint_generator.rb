@@ -36,6 +36,7 @@ module Elastic
         @spec['paths'].each do |endpoints|
           generate_classes(endpoints)
         end
+        Utils.run_rubocop(TARGET_DIR)
       end
 
       private
