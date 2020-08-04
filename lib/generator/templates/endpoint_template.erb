@@ -5,7 +5,7 @@ module Elastic
     class Client
       module <%= @module_name %>
         <%= @doc -%>
-        def <%= @method_name %>(<%= print_required_params %>, parameters = {})
+        def <%= @method_name %>(<%= method_signature_params %>)
           <% required_params.map do |required|
               name = required['name'] -%>
             raise ArgumentError, "Required parameter '<%= name %>' missing" unless <%= name %>

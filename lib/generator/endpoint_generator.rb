@@ -86,10 +86,12 @@ module Elastic
         @params.select { |p| p['required'] }
       end
 
-      def print_required_params
-        required_params.map do |param|
+      def method_signature_params
+        params = required_params.map do |param|
           param['name']
-        end.join(', ')
+        end
+        params << 'parameters = {}'
+        params.join(', ')
       end
 
       def generate_method_code
