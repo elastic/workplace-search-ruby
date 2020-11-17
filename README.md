@@ -1,3 +1,13 @@
+> **⚠️ This client is deprecated ⚠️**
+>
+> As of Enterprise Search version 7.10.0, we are directing users to the new [Enterprise Search Ruby Client](https://github.com/elastic/enterprise-search-ruby) and
+> deprecating this client.
+>
+> This client will be compatible with all Enterprise Search 7.x releases, but will not be compatible with 8.x releases. Our development effort on this project will
+> be limited to bug fixes. All future enhancements will be focused on the Enterprise Search Ruby Client.
+>
+> Thank you! - Elastic
+
 [![Master build](https://github.com/elastic/workplace-search-ruby/workflows/master/badge.svg)](https://github.com/elastic/workplace-search-ruby/actions?query=workflow%3Amaster)
 
 
